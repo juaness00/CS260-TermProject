@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "customer.h"
 using namespace std;
 
 int main(){
