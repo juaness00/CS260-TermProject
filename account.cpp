@@ -1,7 +1,8 @@
 #include "account.h"
 
 
-Account::Account(){
+Account::Account()
+{
     balance = 0;
     withdraws = 0;
     deposits = 0;
