@@ -7,18 +7,26 @@
 using namespace std;
 
 
-
-class Account{
+class Account
+{
     protected:
     int id, withdraws,deposits;
     double balance;
     Customer accountCustomer;
     public:
     Account();
-    Account(string _fName, string _lName, string _address, string _phone, string _email);
+    Account(string _fName, string _lName, string _address, string _phone, string _email, int ID);
     void deposit(double _amount);
     void withdraw(double _amount);
     void printInfo();
+
+};
+
+class CheckingAccount: public Account
+{
+
+    double overDraftLimit = 100.00;
+    CheckingAccount(string _fName, string _lName, string _address, string _phone, string _email);
 
 };
 
