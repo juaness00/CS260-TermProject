@@ -15,7 +15,7 @@ class Account
     Customer accountCustomer;
     public:
     Account();
-    Account(string _fName, string _lName, string _address, string _phone, string _email, int ID);
+    Account(string _fName, string _lName, string _address, string _phone, string _email, int ID, double _balance);
     void deposit(double _amount);
     void withdraw(double _amount);
     void printInfo();
@@ -24,9 +24,11 @@ class Account
 
 class CheckingAccount: public Account
 {
-
     double overDraftLimit = 100.00;
-    CheckingAccount(string _fName, string _lName, string _address, string _phone, string _email);
+    public:
+    CheckingAccount(string _fName, string _lName, string _address, string _phone, string _email, int _id, double _balance, double _overDraftLimit);
+    void Withdraw(int amount);
+
 
 };
 

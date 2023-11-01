@@ -23,6 +23,16 @@
     email = _email;
 
   }
+
+  void Customer::setDefault()
+  {
+    fname = " ";
+    lname = " ";
+    adress = " ";
+    phone = " ";
+    email = " ";
+
+  }
  
   void Customer::setAll(string _fname, string _lname, string _adress, string _phone, string _email)
   {

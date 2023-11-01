@@ -2,7 +2,7 @@
 
 Account::Account()
 {
-    Customer();
+    accountCustomer.setDefault();
     id=0;
     balance = 0;
     withdraws = 0;
@@ -10,10 +10,12 @@ Account::Account()
     
 }
 
-Account::Account(string _fName, string _lName, string _address, string _phone, string _email, int ID)
+Account::Account(string _fName, string _lName, string _address, string _phone, string _email, int _id, double _balance)
 {
+    accountCustomer.setAll(_fName, _lName, _address, _phone, _email);
+    id = _id;
+    balance = _balance;
     
-
 
 };
 
@@ -43,3 +45,11 @@ void Account::printInfo()
     cout << "Number of Deposits: " << deposits << endl;
 
 }
+
+CheckingAccount::CheckingAccount(string _fName, string _lName, string _address, string _phone, string _email, int _id, double _balance, double _overDraftLimit)
+{
+    Account(_fName, _lName, _address, _phone, _email, _id, _balance);
+    overDraftLimit = _overDraftLimit;
+}
+
+

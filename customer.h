@@ -13,6 +13,7 @@ class Customer
 
   Customer();
   Customer(string _fname, string _lname, string _adress, string _phone, string _email);
+  void setDefault();
   void setAll(string _fname, string _lname, string _adress, string _phone, string _email);
   void setName(string _fname, string _lname);
   void setAdress(string _adress);
