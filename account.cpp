@@ -1,9 +1,7 @@
 #include "account.h"
 
-Account::Account()
-{
-    accountCustomer.setDefault();
-    id=0;
+
+Account::Account(){
     balance = 0;
     withdraws = 0;
     deposits = 0;
