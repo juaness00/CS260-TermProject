@@ -11,7 +11,8 @@ using namespace std;
 class Account
 {
     protected:
-    int id, withdraws,deposits;
+    int id,deposits;
+    int withdraws = 0;
     double balance;
     Customer accountCustomer;
     public:
