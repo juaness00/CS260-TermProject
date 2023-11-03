@@ -1,0 +1,15 @@
+# Ignore VSCode related files and directories
+.vscode/
+.vscode-test/
+.history/
+.code-workspace
+
+# Ignore compiled files and executables
+*.out
+*.exe
+*.bin
+
+# Ignore build and output directories
+build/
+out/
+bin/
