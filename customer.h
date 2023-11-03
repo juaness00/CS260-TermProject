@@ -1,6 +1,6 @@
 #pragma once
-#if !defined(customer)
-#define customer
+#if !defined(CUSTOMER_H)
+#define CUSTOMER_H
 #include <iostream>
 #include <string>
 using namespace std;
