@@ -65,6 +65,16 @@
     email = _email;
   }
 
+  void Customer:: setUser(string _username)
+  {
+    username = _username;
+  }
+
+  void Customer:: setPassword(string _password)
+  {
+    password = _password;
+  }
+
   void Customer::getName()
   {
     cout << "Name: " << fname << " " << lname << endl;
@@ -84,13 +94,20 @@
   {
     cout << "Email: " << email << endl;
   }
+
+  void Customer :: getUser()
+  {
+    cout << "The username is: " << endl;
+  }
   
   void Customer::PrintInfo()
- {
+  {
     cout << "Account Information" << endl;
     cout << "-------------------" << endl;
     cout << "Name: " << fname << " " << lname << endl;
     cout << "Adress: " << adress << endl;
     cout << "Phone: " << phone << endl;
     cout << "email: " << phone << endl;
- }
+  }
+
+  

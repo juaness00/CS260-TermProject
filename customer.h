@@ -7,7 +7,7 @@ using namespace std;
 
 class Customer
 {
-  string fname, lname, adress, phone, email;
+  string fname, lname, adress, phone, email, username, password;
 
   public:
 
@@ -24,7 +24,9 @@ class Customer
   void getPhone();
   void getEmail();
   void PrintInfo();
-
+  void setUser(string _username);
+  void setPassword(string _password);
+  void getUser();
 
 
 
