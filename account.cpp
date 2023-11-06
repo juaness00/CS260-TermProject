@@ -35,7 +35,7 @@ void Account::withdraw(double _amount)
 void Account::printInfo()
 {
     
-    cout << "Displaying information for account #" << id << endl;
+    cout << "Displaying information for account..." << id << endl;
     accountCustomer.PrintInfo();
     cout << "Balance: " << balance << endl;
     cout << "Number of Withdraws: " << withdraws << endl;
