@@ -7,18 +7,18 @@
 
     fname = " ";
     lname = " ";
-    adress = " ";
+    address = " ";
     phone = " ";
     email = " "; 
 
   }
 
 
-  Customer::Customer(string _fname, string _lname, string _adress, string _phone, string _email)
+  Customer::Customer(string _fname, string _lname, string _address, string _phone, string _email)
   {
     fname = _fname;
     lname = _lname;
-    adress = _adress;
+    address = _address;
     phone = _phone;
     email = _email;
 
@@ -28,31 +28,35 @@
   {
     fname = " ";
     lname = " ";
-    adress = " ";
+    address = " ";
     phone = " ";
     email = " ";
 
   }
  
-  void Customer::setAll(string _fname, string _lname, string _adress, string _phone, string _email)
+  void Customer::setAll(string _fname, string _lname, string _address, string _phone, string _email)
   {
     fname = _fname;
     lname = _lname;
-    adress = _adress;
+    address = _address;
     phone = _phone;
     email = _email;
 
   }
 
-  void Customer::setName(string _fname, string _lname)
+  void Customer::setfName(string _fname)
   {
     fname = _fname;
+  }
+  
+  void Customer:: setlName(string _lname)
+  {
     lname = _lname;
   }
   
-  void Customer::setAdress(string _adress)
+  void Customer::setAddress(string _address)
   {
-    adress = _adress;
+    address = _address;
   }
   
   void Customer::setPhone(string _phone)
@@ -75,29 +79,34 @@
     password = _password;
   }
 
-  void Customer::getName()
+  string Customer::getfName()
   {
-    cout << "Name: " << fname << " " << lname << endl;
+    return fname;
   }
 
-  void Customer::getAdress()
+  string Customer:: getlName()
   {
-    cout << "Adress: " << adress << endl;
+    return lname;
   }
 
-  void Customer::getPhone()
+  string Customer::getAddress()
   {
-    cout << "Phone: " << phone << endl;
+    return address;
   }
 
-  void Customer:: getEmail()
+  string Customer::getPhone()
   {
-    cout << "Email: " << email << endl;
+    return phone;
   }
 
-  void Customer :: getUser()
+  string Customer:: getEmail()
   {
-    cout << "The username is: " << endl;
+    return email;
+  }
+
+  string Customer :: getUser()
+  {
+    return username;
   }
   
   void Customer::PrintInfo()
@@ -105,7 +114,7 @@
     cout << "Account Information" << endl;
     cout << "-------------------" << endl;
     cout << "Name: " << fname << " " << lname << endl;
-    cout << "Adress: " << adress << endl;
+    cout << "Address: " << address << endl;
     cout << "Phone: " << phone << endl;
     cout << "email: " << phone << endl;
   }

@@ -7,27 +7,28 @@ using namespace std;
 
 class Customer
 {
-  string fname, lname, adress, phone, email, username, password;
+  string fname, lname, address, phone, email, username, password;
 
   public:
 
   Customer();
-  Customer(string _fname, string _lname, string _adress, string _phone, string _email);
+  Customer(string _fname, string _lname, string _address, string _phone, string _email);
   void setDefault();
-  void setAll(string _fname, string _lname, string _adress, string _phone, string _email);
-  void setName(string _fname, string _lname);
-  void setAdress(string _adress);
+  void setAll(string _fname, string _lname, string _address, string _phone, string _email);
+  void setfName(string _fname);
+  void setlName(string _lname);
+  void setAddress(string _address);
   void setPhone(string _phone);
   void setEmail(string _email);
-  void getName();
-  void getAdress();
-  void getPhone();
-  void getEmail();
-  void PrintInfo();
   void setUser(string _username);
   void setPassword(string _password);
-  void getUser();
-
+  string getfName();
+  string getlName();
+  string getAddress();
+  string getPhone();
+  string getEmail();
+  string getUser();
+  void PrintInfo();
 
 
 };
