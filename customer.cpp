@@ -16,13 +16,15 @@
   }
 
 
-  Customer::Customer(string _fname, string _lname, string _address, string _phone, string _email)
+  Customer::Customer(string _fname, string _lname, string _address, string _phone, string _email, string _username, string _password)
   {
     fname = _fname;
     lname = _lname;
     address = _address;
     phone = _phone;
     email = _email;
+    username = _username;
+    password = _password;
     customerID = id;
     id++;
 
@@ -38,13 +40,15 @@
 
   }
  
-  void Customer::setAll(string _fname, string _lname, string _address, string _phone, string _email)
+  void Customer::setAll(string _fname, string _lname, string _address, string _phone, string _email, string _username, string _password)
   {
     fname = _fname;
     lname = _lname;
     address = _address;
     phone = _phone;
     email = _email;
+    username = _username;
+    password = _password;
 
   }
 
@@ -111,6 +115,10 @@
   string Customer :: getUser()
   {
     return username;
+  }
+  string Customer ::getPassword()
+  {
+    return password;
   }
 
   int Customer :: getID()

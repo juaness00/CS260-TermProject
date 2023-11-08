@@ -14,9 +14,9 @@ class Customer
   public:
 
   Customer();
-  Customer(string _fname, string _lname, string _address, string _phone, string _email);
+  Customer(string _fname, string _lname, string _address, string _phone, string _email, string _username, string _password);
   void setDefault();
-  void setAll(string _fname, string _lname, string _address, string _phone, string _email);
+  void setAll(string _fname, string _lname, string _address, string _phone, string _email, string _username, string _password);
   void setfName(string _fname);
   void setlName(string _lname);
   void setAddress(string _address);
@@ -30,6 +30,7 @@ class Customer
   string getPhone();
   string getEmail();
   string getUser();
+  string getPassword();
   int getID();
   void PrintInfo();
 

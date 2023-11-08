@@ -18,7 +18,7 @@ class Account
     Customer accountCustomer;
     public:
     Account();
-    Account(string _fName, string _lName, string _address, string _phone, string _email, int ID, double _balance);
+    Account(string _fName, string _lName, string _address, string _phone, string _email, string _username, string _password, int ID, double _balance);
     
  
   void changefName(string _fname);
@@ -34,6 +34,7 @@ class Account
   string getPhone();
   string getEmail();
   string getUser();
+  string getPassword();
   int getID();
     
     void deposit(double _amount);

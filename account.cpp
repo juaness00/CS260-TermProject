@@ -9,7 +9,7 @@ Account::Account(): accountCustomer()
     
 }
 
-Account::Account(string _fName, string _lName, string _address, string _phone, string _email, int _id, double _balance): accountCustomer(_fName, _lName,_address,_phone,_email)
+Account::Account(string _fName, string _lName, string _address, string _phone, string _email, string _username, string _password, int _id, double _balance): accountCustomer(_fName, _lName,_address,_phone,_email, _username, _password)
 {
     id = _id;
     balance = _balance;
@@ -98,6 +98,12 @@ string Account::getUser()
 {
     return accountCustomer.getUser();
 }
+
+  string Account::getPassword()
+  {
+    return accountCustomer.getPassword();
+  }
+
 int Account::getID()
 {
     return accountCustomer.getID();
