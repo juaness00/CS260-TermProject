@@ -30,6 +30,7 @@ class Customer
   string getPhone();
   string getEmail();
   string getUser();
+  int getID();
   void PrintInfo();
 
 

@@ -20,6 +20,21 @@ class Account
     Account();
     Account(string _fName, string _lName, string _address, string _phone, string _email, int ID, double _balance);
     
+ 
+  void changefName(string _fname);
+  void changelName(string _lname);
+  void changeAddress(string _address);
+  void changePhone(string _phone);
+  void changeEmail(string _email);
+  void changeUser(string _username);
+  void changePassword(string _password);
+  string getfName();
+  string getlName();
+  string getAddress();
+  string getPhone();
+  string getEmail();
+  string getUser();
+  int getID();
     
     void deposit(double _amount);
     void withdraw(double _amount);

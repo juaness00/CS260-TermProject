@@ -112,6 +112,11 @@
   {
     return username;
   }
+
+  int Customer :: getID()
+  {
+    return customerID;
+  }
   
   void Customer::PrintInfo()
   {

@@ -24,6 +24,7 @@ void Account::deposit(double _amount)
     balance = balance + _amount;
     deposits++;
 }
+
 void Account::withdraw(double _amount)
 {
     if(_amount <= 0){
@@ -33,6 +34,75 @@ void Account::withdraw(double _amount)
     balance = balance - _amount;
     withdraws++;
 }
+
+void Account::changefName(string _fname)
+{
+    accountCustomer.setfName(_fname);
+}
+void Account::changelName(string _lname)
+{
+    accountCustomer.setlName(_lname);
+}
+
+void Account::changeAddress(string _address)
+{
+    accountCustomer.setAddress(_address);
+}
+
+void Account::changePhone(string _phone)
+{
+    accountCustomer.setPhone(_phone);
+}
+
+void Account::changeEmail(string _email)
+{
+    accountCustomer.setEmail(_email);
+}
+
+void Account::changeUser(string _username)
+{
+    accountCustomer.setUser(_username);
+}
+
+void Account::changePassword(string _password)
+{
+    accountCustomer.setPassword(_password);
+}
+
+string Account::getfName()
+{
+    return accountCustomer.getfName();
+}
+
+string Account::getlName()
+{
+    return accountCustomer.getlName();
+}
+
+string Account::getAddress()
+{
+    return accountCustomer.getAddress();
+}
+
+string Account::getPhone()
+{
+    return accountCustomer.getPhone();
+}
+
+string Account::getEmail()
+{
+    return accountCustomer.getEmail();
+}
+
+string Account::getUser()
+{
+    return accountCustomer.getUser();
+}
+int Account::getID()
+{
+    return accountCustomer.getID();
+}
+
 void Account::printInfo()
 {
     
