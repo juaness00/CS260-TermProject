@@ -10,6 +10,8 @@
     address = " ";
     phone = " ";
     email = " "; 
+    customerID = id;
+    id++;
 
   }
 
@@ -21,6 +23,8 @@
     address = _address;
     phone = _phone;
     email = _email;
+    customerID = id;
+    id++;
 
   }
 

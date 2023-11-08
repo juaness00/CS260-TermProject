@@ -8,6 +8,8 @@ using namespace std;
 class Customer
 {
   string fname, lname, address, phone, email, username, password;
+  int customerID;
+  static int id;
 
   public:
 
@@ -33,5 +35,6 @@ class Customer
 
 };
 
+int Customer::id = 1;
 
 #endif
