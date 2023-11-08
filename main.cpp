@@ -2,11 +2,39 @@
 #include <string>
 #include "savings.h"
 #include "checking.h"
+#include "customer.h"
 using namespace std;
 
-const int ARRSIZE = 10;
-SavingsAccount savingsArr[ARRSIZE] = {};
-CheckingAccount checkingArr[ARRSIZE] = {};
+const int ACCOUNT_ARRSIZE = 100;
+int CUSTOMER_ARRSIZE = 10;
+int current_customer_index = 0;
+static SavingsAccount savingsArr[ACCOUNT_ARRSIZE] = {};
+static CheckingAccount checkingArr[ACCOUNT_ARRSIZE] = {};
+static Customer customerArr[CUSTOMER_ARRSIZE] = {};
+
+int createNewAccount(string type,string username,customer &arr){
+    for(int i = 0; i < CUSTOMER_ARRSIZE; i++){
+
+    }
+    if(type == "savings"){
+        SavingsAccount tempAccount;
+    }else if (type == "checking"){
+        CheckingAccount tempAccount;
+    }
+}
+
+int createNewCustomer(string _fname, string _lname, string _address, string _phone, string _email, string username, string password){
+    if (max_customers <= 0){
+        cout << "Max customers reached\n";
+        return 500;
+    }
+    Customer tempCustomer(_fname, _lname, _address, _phone, _email);
+    customerArr[current_customer_index] = tempCustomer;
+    return tempCustomer.getID();
+}
+
+
+
 
 int main()
 {
@@ -48,10 +76,5 @@ int main()
 
 }
 
-int getAccountArr(username){
-    for(int i=0, i < ARRSIZE, i++){
-        if(savingsArr[i].getUser() == username){
 
-        }
-    }
-}
+
