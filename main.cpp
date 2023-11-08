@@ -14,7 +14,6 @@ static Customer customerArr[CUSTOMER_ARRSIZE] = {};
 
 int createNewAccount(string type,string username,customer &arr){
     for(int i = 0; i < CUSTOMER_ARRSIZE; i++){
-
     }
     if(type == "savings"){
         SavingsAccount tempAccount;
