@@ -8,8 +8,6 @@ using namespace std;
 class Customer
 {
   string fname, lname, address, phone, email, username, password;
-  int customerID;
-  static int id;
 
   public:
 
@@ -24,19 +22,17 @@ class Customer
   void setEmail(string _email);
   void setUser(string _username);
   void setPassword(string _password);
+  bool isEmpty();
   string getfName();
   string getlName();
   string getAddress();
   string getPhone();
   string getEmail();
   string getUser();
-  string getPassword();
-  int getID();
   void PrintInfo();
 
 
 };
 
-int Customer::id = 1;
 
 #endif

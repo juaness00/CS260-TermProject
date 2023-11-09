@@ -12,8 +12,8 @@ class Account
 {
     protected:
     int id;
-    int deposits = 0;
-    int withdraws = 0;
+    int deposits;
+    int withdraws;
     double balance;
     Customer accountCustomer;
     public:

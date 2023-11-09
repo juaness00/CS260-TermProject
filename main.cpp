@@ -5,15 +5,10 @@
 #include "customer.h"
 using namespace std;
 
-const int ACCOUNT_ARRSIZE = 100;
-int CUSTOMER_ARRSIZE = 10;
-int current_customer_index = 0;
-static SavingsAccount savingsArr[ACCOUNT_ARRSIZE] = {};
-static CheckingAccount checkingArr[ACCOUNT_ARRSIZE] = {};
-static Customer customerArr[CUSTOMER_ARRSIZE] = {};
 
-int createNewAccount(string type,string username,customer &arr){
-    for(int i = 0; i < CUSTOMER_ARRSIZE; i++){
+
+int createNewAccount(string type,string username,Customer arr[], int customerArrSize){
+    for(int i = 0; i < customerArrSize; i++){
     }
     if(type == "savings"){
         SavingsAccount tempAccount;
@@ -22,24 +17,55 @@ int createNewAccount(string type,string username,customer &arr){
     }
 }
 
-int createNewCustomer(string _fname, string _lname, string _address, string _phone, string _email, string username, string password){
-    if (max_customers <= 0){
-        cout << "Max customers reached\n";
-        return 500;
+bool usernameExists(string username, Customer customerArr[], int customerArrSize) {
+    for(int i = 0; i < customerArrSize; ++i) {
+        if(customerArr[i].getUser() == username) {
+            return true;
+        }
     }
-    Customer tempCustomer(_fname, _lname, _address, _phone, _email);
+    return false;
+}
+
+bool createNewCustomer(string _fname, string _lname, string _address, string _phone, string _email, string username, string password, Customer customerArr[], int &current_customer_index, int customerArrSize) {
+    if(current_customer_index >= customerArrSize) {
+        cout << "Maximum number of customers reached.\\n";
+        return false;
+    }
+
+    if(usernameExists(username, customerArr, current_customer_index)) {
+        cout << "Username already exists. Please choose a different one.\\n";
+        return false;
+    }
+
+    Customer tempCustomer(_fname, _lname, _address, _phone, _email, username, password);
     customerArr[current_customer_index] = tempCustomer;
-    return tempCustomer.getID();
+    current_customer_index++;
+    return true;
 }
 
 
 
+Customer findCustomerByUsername(string username, Customer customerArr[], int customerArrSize) {
+    for(int i = 0; i < customerArrSize; ++i) {
+        if(customerArr[i].getUser() == username) {
+            return customerArr[i];
+        }
+    }
+    return Customer();
+}
+
 
 int main()
 {
+    const int ACCOUNT_ARRSIZE = 100;
+    int CUSTOMER_ARRSIZE = 10;
+    int current_customer_index = 0;
+    SavingsAccount savingsArr[ACCOUNT_ARRSIZE];
+    CheckingAccount checkingArr[ACCOUNT_ARRSIZE];
+    Customer customerArr[CUSTOMER_ARRSIZE];
     const string adminUser = "admin";
     const string adminPass = "admin123";
-
+    Customer currentCustomer;
     int menuOption;
     string username, password;
     do{
@@ -56,8 +82,13 @@ int main()
         switch(menuOption){
             case 1:
                 cout << "username: ";
-                cin >> username;   
-                if ()             
+                cin >> username;
+                currentCustomer = findCustomerByUsername(username,customerArr,CUSTOMER_ARRSIZE);
+                if (currentCustomer.isEmpty()){
+                    cout << "Sorry, the customer account " << username << " was not found, please select another option.\n";
+                    break;
+                }
+                cout << "username found!\n";       
                 break;
             case 2:
                 cout << "You selected option 2\n";

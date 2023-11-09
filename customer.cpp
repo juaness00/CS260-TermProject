@@ -10,8 +10,7 @@
     address = " ";
     phone = " ";
     email = " "; 
-    customerID = id;
-    id++;
+    username = "";
 
   }
 
@@ -25,8 +24,7 @@
     email = _email;
     username = _username;
     password = _password;
-    customerID = id;
-    id++;
+
 
   }
 
@@ -120,11 +118,6 @@
   {
     return password;
   }
-
-  int Customer :: getID()
-  {
-    return customerID;
-  }
   
   void Customer::PrintInfo()
   {
@@ -134,6 +127,13 @@
     cout << "Address: " << address << endl;
     cout << "Phone: " << phone << endl;
     cout << "email: " << phone << endl;
+  }
+
+  bool Customer::isEmpty(){
+    if (username == ""){
+      return true;
+    }
+    return false;
   }
 
   
