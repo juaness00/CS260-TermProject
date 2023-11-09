@@ -3,81 +3,15 @@
 #include "savings.h"
 #include "checking.h"
 #include "customer.h"
+#include "utils.h"
 using namespace std;
-
-
-
-// createNewAccount(string type,string username,Customer arr[], int customerArrSize){
-//     for(int i = 0; i < customerArrSize; i++){
-//     }
-//     if(type == "savings"){
-//         SavingsAccount tempAccount;
-//     }else if (type == "checking"){
-//         CheckingAccount tempAccount;
-//     }
-// }
-
-bool usernameExists(string username, Customer customerArr[], int customerArrSize) {
-    for(int i = 0; i < customerArrSize; ++i) {
-        if(customerArr[i].getUser() == username) {
-            return true;
-        }
-    }
-    return false;
-}
-
-void createNewCustomer(Customer customerArr[], int &current_customer_index, int customerArrSize) {
-    if (current_customer_index >= customerArrSize) {
-        cout << "Maximum number of customers reached.\n";
-        return;
-    }
-
-    string _fname, _lname, _address, _phone, _email, username, password;
-
-    cout << "Enter first name: ";
-    cin >> _fname;
-    cout << "Enter last name: ";
-    cin >> _lname;
-    cout << "Enter address: ";
-    cin.ignore();  
-    getline(cin, _address);
-    cout << "Enter phone number: ";
-    cin >> _phone;
-    cout << "Enter email: ";
-    cin >> _email;
-    cout << "Choose a username: ";
-    cin >> username;
-
-
-    while(usernameExists(username, customerArr, current_customer_index)) {
-        cout << "Username already exists. Please choose a different one: ";
-        cin >> username;
-    }
-    cout << "Choose a password: ";
-    cin >> password;
-    Customer tempCustomer(_fname, _lname, _address, _phone, _email, username, password);
-    customerArr[current_customer_index] = tempCustomer;
-    current_customer_index++;
-
-    cout << "Customer created successfully. \n";
-}
-
-
-
-
-Customer findCustomerByUsername(string username, Customer customerArr[], int customerArrSize) {
-    for(int i = 0; i < customerArrSize; ++i) {
-        if(customerArr[i].getUser() == username) {
-            return customerArr[i];
-        }
-    }
-    return Customer();
-}
 
 
 int main()
 {
-    const int ACCOUNT_ARRSIZE = 100;
+    const int ACCOUNT_ARRSIZE = 5;
+    bool currentAvaliableSavingsIndexes[ACCOUNT_ARRSIZE];
+    bool currentAvaliableCheckingIndexes[ACCOUNT_ARRSIZE];
     int CUSTOMER_ARRSIZE = 10;
     int current_customer_index = 0;
     SavingsAccount savingsArr[ACCOUNT_ARRSIZE];
@@ -88,30 +22,89 @@ int main()
     Customer currentCustomer;
     int menuOption;
     string username, password;
+    for(int i=0; i < ACCOUNT_ARRSIZE; i++){
+        currentAvaliableCheckingIndexes[i] = true;
+        currentAvaliableSavingsIndexes[i] = true;
+    }
     do{
-        cout <<"\n\n<------------------------------------------------------>\n\n";
-        cout << "welcome to the Bank Menu\n1. login \n2. create an account \n3. admin\nEnter 0 to exit\noption: ";
-        cin >> menuOption;
-        while(cin.fail()){
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Invalid option, please try again.\n";
-            cout << "option: ";
-            cin >> menuOption;
-        }
+        cout << "welcome to the Bank Menu\n1. login \n2. create an account \n3. admin\nEnter 0 to exit\nAt any point but the main menu, enter 'exit' to return to this menu\noption: ";
+        getMenuOption(menuOption);
         switch(menuOption){
             case 1:
-                cout << "username: ";
-                cin >> username;
-                currentCustomer = findCustomerByUsername(username,customerArr,CUSTOMER_ARRSIZE);
-                if (currentCustomer.isEmpty()){
-                    cout << "Sorry, the customer account " << username << " was not found, please select another option.\n";
-                    break;
-                }
-                cout << "username found!\n";       
+                currentCustomer = loginCustomer(customerArr,CUSTOMER_ARRSIZE);
+                if (!currentCustomer.isEmpty()){
+                    do{
+                        cout << "Welcome " << currentCustomer.getfName() << " " << currentCustomer.getlName() << endl;
+                        cout << "here are your menu options:\n1. show account and customer information\n2. deposit from account\n3. withdraw to account\n4. show total balance\n5.tranfer to another account\n6. create an account\n";
+                        cout << "option: ";
+                        getMenuOption(menuOption);
+                        switch (menuOption)
+                        {
+                        case 1:
+                            currentCustomer.PrintInfo();
+                            showCustomerAccounts(currentCustomer.getUser(),savingsArr,checkingArr,ACCOUNT_ARRSIZE,false);
+                            break;
+
+                        case 2:
+                            int accountNumber;
+                            if(currentCustomer.hasAnAccount()){
+                                cout << "Here are your accounts:\n";
+                                showCustomerAccounts(currentCustomer.getUser(),savingsArr,checkingArr,ACCOUNT_ARRSIZE,false);
+                                cout << "enter the account id of the account you wish to deposit to\n";
+                                cout << "account #";
+                                cin >> accountNumber;
+                                while(cin.fail()){
+                                    cin.clear();
+                                    cin.ignore(1000, '\n');
+                                    cout << "Invalid value, please try again.\n";
+                                    cout << "value: ";
+                                    cin >> accountNumber;
+                                }
+                                depositToAccount(currentCustomer.getUser(),savingsArr,checkingArr,ACCOUNT_ARRSIZE,accountNumber);
+                            }else cout << "You do not have an account yet, create one first\n";
+                            break;
+                           
+                        case 3:
+                            break;
+                        
+                        case 4:
+                            break;
+                           
+                        case 5:
+                            break;
+                            
+                        case 6:
+                            cout <<"please select account type\n1. savings\n2. checking\n";
+                            cout << "option: ";
+                            getMenuOption(menuOption);
+                            switch (menuOption)
+                            {
+                            case 1:
+                                createNewAccount("savings", currentCustomer,savingsArr,checkingArr,ACCOUNT_ARRSIZE,currentAvaliableSavingsIndexes,currentAvaliableCheckingIndexes);
+                                cout << "account created successfully!\n";
+                                break;
+                            
+                            case 2:
+                                createNewAccount("checking", currentCustomer,savingsArr,checkingArr,ACCOUNT_ARRSIZE,currentAvaliableSavingsIndexes,currentAvaliableCheckingIndexes);
+                                cout << "account created successfully!\n";
+                                break;
+                            
+                            default:
+                                if(menuOption !=0)
+                                cout << "\nOption invalid, please try again.\n";
+                            }
+                            break;
+                        default:
+                            if(menuOption !=0)
+                            cout << "\nOption invalid, please try again.\n";
+                        }
+                    }while(menuOption != 0);
+                    
+                }   
                 break;
             case 2:
                 createNewCustomer(customerArr,current_customer_index,CUSTOMER_ARRSIZE);
+
                 break;
             case 3:
                 cout << "You selected option 3\n";
@@ -121,7 +114,6 @@ int main()
                 cout << "\nOption invalid, please try again.\n";
         }
     }while(menuOption != 0);
-    cout << "Goodbye :)\n";
     return 0;
 
 }

@@ -4,10 +4,10 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
 class Customer
-{
+{ 
   string fname, lname, address, phone, email, username, password;
+  bool hasOneAccount;
 
   public:
 
@@ -23,6 +23,8 @@ class Customer
   void setUser(string _username);
   void setPassword(string _password);
   bool isEmpty();
+  bool hasAnAccount();
+  void addedAccount();
   string getfName();
   string getlName();
   string getAddress();
@@ -31,7 +33,6 @@ class Customer
   string getUser();
   string getPassword();
   void PrintInfo();
-
 
 };
 

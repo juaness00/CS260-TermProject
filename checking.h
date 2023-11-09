@@ -12,7 +12,7 @@ class CheckingAccount: public Account
     double overDraftLimit;
     public:
     CheckingAccount();
-    CheckingAccount(string _fName, string _lName, string _address, string _phone, string _email,string _username, string _password, int _id, double _balance, double _overDraftLimit);
+    CheckingAccount(Customer customer, double _balance, double _overDraftLimit);
     void Withdraw(double amount);
 
 

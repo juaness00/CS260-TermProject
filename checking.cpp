@@ -5,9 +5,9 @@ CheckingAccount::CheckingAccount(): Account()
     overDraftLimit = 100.00;
 }
 
-CheckingAccount::CheckingAccount(string _fName, string _lName, string _address, string _phone, string _email,string _username, string _password, int _id, double _balance, double _overDraftLimit)
+CheckingAccount::CheckingAccount(Customer customer, double _balance, double _overDraftLimit)
 {
-    Account(_fName, _lName, _address, _phone, _email, _username, _password, _id,  _balance);
+    Account(customer,_balance);
     overDraftLimit = _overDraftLimit;
 }
 

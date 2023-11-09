@@ -1,5 +1,4 @@
-  #include "customer.h"
- 
+  #include "customer.h" 
  
  
   Customer::Customer()
@@ -11,7 +10,8 @@
     phone = " ";
     email = " "; 
     username = "";
-
+    hasOneAccount = false;
+    
   }
 
 
@@ -23,6 +23,7 @@
     phone = _phone;
     email = _email;
     username = _username;
+    hasOneAccount = false;
     password = _password;
 
 
@@ -134,6 +135,14 @@
       return true;
     }
     return false;
+  }
+
+  bool Customer::hasAnAccount(){
+    return hasOneAccount;
+  }
+
+  void Customer::addedAccount(){
+    hasOneAccount = true;
   }
 
   

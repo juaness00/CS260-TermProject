@@ -1,20 +1,26 @@
 #include "account.h"
+int Account:: id = 1;
 
-
-Account::Account(): accountCustomer()
+Account::Account()
 {
     balance = 0;
     withdraws = 0;
     deposits = 0;
+    accountId = id;
+    id++;
     
 }
 
-Account::Account(string _fName, string _lName, string _address, string _phone, string _email, string _username, string _password, int _id, double _balance): accountCustomer(_fName, _lName,_address,_phone,_email, _username, _password)
-{
-    id = _id;
-    balance = _balance;
+Account::Account(Customer currentCustomer,double _balance){
+    currentCustomer.PrintInfo();
+    accountCustomer = currentCustomer;
+    accountId = id;
+    id++;
 };
 
+int Account::getId(){
+    return accountId;
+}
 void Account::deposit(double _amount)
 {
     if(_amount <= 0){
@@ -99,21 +105,22 @@ string Account::getUser()
     return accountCustomer.getUser();
 }
 
-  string Account::getPassword()
+string Account::getPassword()
   {
     return accountCustomer.getPassword();
   }
 
-void Account::printInfo()
+void Account::printInfo(bool showCustomerInfo)
 {
-    
-    cout << "Displaying information for account..." << id << endl;
-    accountCustomer.PrintInfo();
-    cout << "Balance: " << balance << endl;
+    if(showCustomerInfo)
+        accountCustomer.PrintInfo();
+
+    cout << "Balance: $" << balance << endl;
     cout << "Number of Withdraws: " << withdraws << endl;
     cout << "Number of Deposits: " << deposits << endl;
 
 }
 
-
-
+void Account::setCustomer(Customer customer){
+    accountCustomer = customer;
+}

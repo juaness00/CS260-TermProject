@@ -12,8 +12,8 @@ class SavingsAccount: public Account
     double interestRate;
     public:
     SavingsAccount();
-    SavingsAccount(double _interestRate ,string _fName, string _lName, string _address, string _phone, string _email,string _username, string _password, int _id, double _balance);
-    void printInfo();
+    SavingsAccount(Customer customer, double _interestRate , double _balance);
+    void printInfo(bool showCustomerInfo);
 };
 
 

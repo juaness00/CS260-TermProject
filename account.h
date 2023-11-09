@@ -3,22 +3,22 @@
 #define ACCOUNT_H
 #include <iostream>
 #include <string>
-#include "customer.h"
-
 using namespace std;
+#include "customer.h"
 
 
 class Account
 {
     protected:
-    int id;
+    Customer accountCustomer;
+    static int id;
+    int accountId;
     int deposits;
     int withdraws;
     double balance;
-    Customer accountCustomer;
     public:
     Account();
-    Account(string _fName, string _lName, string _address, string _phone, string _email, string _username, string _password, int ID, double _balance);
+    Account(Customer customer, double _balance);
     
  
   void changefName(string _fname);
@@ -28,6 +28,7 @@ class Account
   void changeEmail(string _email);
   void changeUser(string _username);
   void changePassword(string _password);
+  void setCustomer(Customer customer);
   string getfName();
   string getlName();
   string getAddress();
@@ -35,10 +36,10 @@ class Account
   string getEmail();
   string getUser();
   string getPassword();
+  int getId();
   void deposit(double _amount);
   void withdraw(double _amount);
-  void printInfo();
+  void printInfo(bool showCustomerInfo);
 
 };
-
 #endif
