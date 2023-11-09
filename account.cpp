@@ -104,11 +104,6 @@ string Account::getUser()
     return accountCustomer.getPassword();
   }
 
-int Account::getID()
-{
-    return accountCustomer.getID();
-}
-
 void Account::printInfo()
 {
     

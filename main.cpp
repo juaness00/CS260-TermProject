@@ -7,15 +7,15 @@ using namespace std;
 
 
 
-int createNewAccount(string type,string username,Customer arr[], int customerArrSize){
-    for(int i = 0; i < customerArrSize; i++){
-    }
-    if(type == "savings"){
-        SavingsAccount tempAccount;
-    }else if (type == "checking"){
-        CheckingAccount tempAccount;
-    }
-}
+// createNewAccount(string type,string username,Customer arr[], int customerArrSize){
+//     for(int i = 0; i < customerArrSize; i++){
+//     }
+//     if(type == "savings"){
+//         SavingsAccount tempAccount;
+//     }else if (type == "checking"){
+//         CheckingAccount tempAccount;
+//     }
+// }
 
 bool usernameExists(string username, Customer customerArr[], int customerArrSize) {
     for(int i = 0; i < customerArrSize; ++i) {
@@ -26,22 +26,42 @@ bool usernameExists(string username, Customer customerArr[], int customerArrSize
     return false;
 }
 
-bool createNewCustomer(string _fname, string _lname, string _address, string _phone, string _email, string username, string password, Customer customerArr[], int &current_customer_index, int customerArrSize) {
-    if(current_customer_index >= customerArrSize) {
-        cout << "Maximum number of customers reached.\\n";
-        return false;
+void createNewCustomer(Customer customerArr[], int &current_customer_index, int customerArrSize) {
+    if (current_customer_index >= customerArrSize) {
+        cout << "Maximum number of customers reached.\n";
+        return;
     }
 
-    if(usernameExists(username, customerArr, current_customer_index)) {
-        cout << "Username already exists. Please choose a different one.\\n";
-        return false;
-    }
+    string _fname, _lname, _address, _phone, _email, username, password;
 
+    cout << "Enter first name: ";
+    cin >> _fname;
+    cout << "Enter last name: ";
+    cin >> _lname;
+    cout << "Enter address: ";
+    cin.ignore();  
+    getline(cin, _address);
+    cout << "Enter phone number: ";
+    cin >> _phone;
+    cout << "Enter email: ";
+    cin >> _email;
+    cout << "Choose a username: ";
+    cin >> username;
+
+
+    while(usernameExists(username, customerArr, current_customer_index)) {
+        cout << "Username already exists. Please choose a different one: ";
+        cin >> username;
+    }
+    cout << "Choose a password: ";
+    cin >> password;
     Customer tempCustomer(_fname, _lname, _address, _phone, _email, username, password);
     customerArr[current_customer_index] = tempCustomer;
     current_customer_index++;
-    return true;
+
+    cout << "Customer created successfully. \n";
 }
+
 
 
 
@@ -91,7 +111,7 @@ int main()
                 cout << "username found!\n";       
                 break;
             case 2:
-                cout << "You selected option 2\n";
+                createNewCustomer(customerArr,current_customer_index,CUSTOMER_ARRSIZE);
                 break;
             case 3:
                 cout << "You selected option 3\n";

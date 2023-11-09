@@ -35,11 +35,9 @@ class Account
   string getEmail();
   string getUser();
   string getPassword();
-  int getID();
-    
-    void deposit(double _amount);
-    void withdraw(double _amount);
-    void printInfo();
+  void deposit(double _amount);
+  void withdraw(double _amount);
+  void printInfo();
 
 };
 

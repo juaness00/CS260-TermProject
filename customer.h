@@ -29,6 +29,7 @@ class Customer
   string getPhone();
   string getEmail();
   string getUser();
+  string getPassword();
   void PrintInfo();
 
 
