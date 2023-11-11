@@ -40,6 +40,7 @@ class Account
   void deposit(double _amount);
   void withdraw(double _amount);
   void printInfo(bool showCustomerInfo);
+  double getBalance();
 
 };
 #endif

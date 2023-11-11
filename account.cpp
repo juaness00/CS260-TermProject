@@ -124,3 +124,7 @@ void Account::printInfo(bool showCustomerInfo)
 void Account::setCustomer(Customer customer){
     accountCustomer = customer;
 }
+
+double Account::getBalance(){
+    return balance;
+}

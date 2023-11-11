@@ -21,6 +21,7 @@ int main()
     const string adminPass = "admin123";
     Customer currentCustomer;
     int menuOption;
+    int accountNumber, transferTo, transferFrom;
     string username, password;
     for(int i=0; i < ACCOUNT_ARRSIZE; i++){
         currentAvaliableCheckingIndexes[i] = true;
@@ -35,7 +36,7 @@ int main()
                 if (!currentCustomer.isEmpty()){
                     do{
                         cout << "Welcome " << currentCustomer.getfName() << " " << currentCustomer.getlName() << endl;
-                        cout << "here are your menu options:\n1. show account and customer information\n2. deposit from account\n3. withdraw to account\n4. show total balance\n5.tranfer to another account\n6. create an account\n";
+                        cout << "here are your menu options:\n1. show account and customer information\n2. deposit to account\n3. withdraw from account\n4. show total balance\n5. tranfer to another account\n6. create an account\n0. Enter 0 to log out\n";
                         cout << "option: ";
                         getMenuOption(menuOption);
                         switch (menuOption)
@@ -46,7 +47,6 @@ int main()
                             break;
 
                         case 2:
-                            int accountNumber;
                             if(currentCustomer.hasAnAccount()){
                                 cout << "Here are your accounts:\n";
                                 showCustomerAccounts(currentCustomer.getUser(),savingsArr,checkingArr,ACCOUNT_ARRSIZE,false);
@@ -65,12 +65,55 @@ int main()
                             break;
                            
                         case 3:
+                            if(currentCustomer.hasAnAccount()){
+                                cout << "Here are your accounts:\n";
+                                showCustomerAccounts(currentCustomer.getUser(),savingsArr,checkingArr,ACCOUNT_ARRSIZE,false);
+                                cout << "enter the account id of the account you wish to withdraw from\n";
+                                cout << "account #";
+                                cin >> accountNumber;
+                                while(cin.fail()){
+                                    cin.clear();
+                                    cin.ignore(1000, '\n');
+                                    cout << "Invalid value, please try again.\n";
+                                    cout << "value: ";
+                                    cin >> accountNumber;
+                                }
+                                withdrawnFromAccount(currentCustomer.getUser(),savingsArr,checkingArr,ACCOUNT_ARRSIZE,accountNumber);
+                            }else cout << "You do not have an account yet, create one first\n";
                             break;
                         
                         case 4:
+                        if(currentCustomer.hasAnAccount()){
+                            showTotalBalance(currentCustomer.getUser(),savingsArr,checkingArr,ACCOUNT_ARRSIZE);
+                        }else cout << "You do not have an account yet, create one first\n";
                             break;
                            
                         case 5:
+                        if(currentCustomer.hasAnAccount()){
+                            cout << "Here are your accounts:\n";
+                            showCustomerAccounts(currentCustomer.getUser(),savingsArr,checkingArr,ACCOUNT_ARRSIZE,false);
+                            cout << "enter the account id of the account you wish to transfer from\n";
+                            cout << "account #";
+                            cin >> transferFrom;
+                            while(cin.fail()){
+                                cin.clear();
+                                cin.ignore(1000, '\n');
+                                cout << "Invalid value, please try again.\n";
+                                cout << "value: ";
+                                cin >> transferFrom;
+                            }
+                            cout << "enter the account id of the account you wish to transfer to\n";
+                            cout << "account #";
+                            cin >> transferTo;
+                            while(cin.fail()){
+                                cin.clear();
+                                cin.ignore(1000, '\n');
+                                cout << "Invalid value, please try again.\n";
+                                cout << "value: ";
+                                cin >> transferTo;
+                            }
+                            transferBetweenAccounts(currentCustomer.getUser(),savingsArr,checkingArr,ACCOUNT_ARRSIZE,transferTo,transferFrom);
+                        }else cout << "You do not have an account yet, create one first\n";
                             break;
                             
                         case 6:
@@ -99,8 +142,8 @@ int main()
                             cout << "\nOption invalid, please try again.\n";
                         }
                     }while(menuOption != 0);
-                    
-                }   
+                }
+                menuOption = 1;
                 break;
             case 2:
                 createNewCustomer(customerArr,current_customer_index,CUSTOMER_ARRSIZE);

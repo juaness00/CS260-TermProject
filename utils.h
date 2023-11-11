@@ -132,6 +132,7 @@ Customer loginCustomer(Customer *customerArr, int customerArrSize){
     for(int i = 0; i < customerArrSize; i++){
         if(customerArr[i].getUser() == username){
             tempCustomer = customerArr[i];
+            break;
         }
     }
     if(tempCustomer.isEmpty()){
@@ -193,6 +194,7 @@ void depositToAccount(string username, SavingsAccount *sAccounts, CheckingAccoun
                 cin >> deposit;
             }
             sAccounts[i].deposit(deposit);
+            break;
             // cout << "New balance: $" << sAccounts[i]
         }else if(cAccounts[i].getId() == id && cAccounts[i].getUser() == username){
             cout << "Enter amount to deposit to checking account #" << cAccounts[i].getId() << ": ";
@@ -205,8 +207,94 @@ void depositToAccount(string username, SavingsAccount *sAccounts, CheckingAccoun
                 cin >> deposit;
             }
             cAccounts[i].deposit(deposit);
+            break;
         }
     }
 }
 
+void withdrawnFromAccount(string username, SavingsAccount *sAccounts, CheckingAccount *cAccounts, int arrSize,int id){
+    double amount;
+    for(int i=0;i < arrSize; i++){
+        if(sAccounts[i].getId() == id && sAccounts[i].getUser() == username){
+            cout << "Enter amount to withdrawn from savings account #" << sAccounts[i].getId() << ": ";
+            cin >> amount;
+            while(cin.fail()){
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Invalid value, please try again.\n";
+                cout << "value: ";
+                cin >> amount;
+            }
+            sAccounts[i].withdraw(amount);
+            break;
+            // cout << "New balance: $" << sAccounts[i]
+        }else if(cAccounts[i].getId() == id && cAccounts[i].getUser() == username){
+            cout << "Enter amount to withdrawn from checking account #" << cAccounts[i].getId() << ": ";
+            cin >> amount;
+            while(cin.fail()){
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Invalid value, please try again.\n";
+                cout << "value: ";
+                cin >> amount;
+            }
+            cAccounts[i].withdraw(amount);
+            break;
+        }
+    }
+}
+
+void showTotalBalance(string username, SavingsAccount *sAccounts, CheckingAccount *cAccounts, int arrSize){
+    double amount = 0;
+    for(int i = 0; i < arrSize; i++){
+        if(sAccounts[i].getUser() == username){
+            amount = amount + sAccounts[i].getBalance();
+        }
+        if(cAccounts[i].getUser() == username){
+            amount = amount + cAccounts[i].getBalance();
+        }
+    }
+    cout << "Your total balance is $" << amount << endl; 
+}
+
+
+void transferBetweenAccounts(string username, SavingsAccount *sAccounts, CheckingAccount *cAccounts, int arrSize,int toId, int fromId){
+    double amount;
+    cout << "Enter amount to transfer: $";
+    cin >>amount;
+    while(cin.fail()){
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid value, please try again.\n";
+        cout << "value: ";
+        cin >> amount;
+    }
+    
+    for(int i = 0; i < arrSize; i++){
+        if(sAccounts[i].getId() == fromId && sAccounts[i].getUser() == username){
+            sAccounts[i].withdraw(amount);
+            break;
+        }else if(cAccounts[i].getId() == fromId && cAccounts[i].getUser() == username){
+            cAccounts[i].withdraw(amount);
+            break;
+        }
+        else{
+            cout << "No account with that id found";
+        }
+    }
+
+    for(int i = 0; i < arrSize; i++){
+        if(sAccounts[i].getId() == toId && sAccounts[i].getUser() == username){
+            sAccounts[i].deposit(amount);
+            break;
+        }else if(cAccounts[i].getId() == toId && cAccounts[i].getUser() == username){
+            cAccounts[i].deposit(amount);
+            break;
+        }
+        else{
+            cout << "No account with that id found";
+        }
+    }
+}
 #endif
+ 
