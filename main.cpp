@@ -16,9 +16,7 @@ int main()
     int current_customer_index = 0;
     SavingsAccount savingsArr[ACCOUNT_ARRSIZE];
     CheckingAccount checkingArr[ACCOUNT_ARRSIZE];
-    Customer customerArr[CUSTOMER_ARRSIZE];
-    const string adminUser = "admin";
-    const string adminPass = "admin123";
+    Customer customerArr[CUSTOMER_ARRSIZE];;
     Customer currentCustomer;
     int menuOption;
     int accountNumber, transferTo, transferFrom;
@@ -150,7 +148,29 @@ int main()
 
                 break;
             case 3:
-                cout << "You selected option 3\n";
+                if(IsExit(username,"user: ")){
+                    break;
+                }
+                if(IsExit(password,"pass: ")){
+                    break;
+                }
+                do{
+                    if(loginAdmin(username,password)){
+                        cout << "Welcome admin, here are your options:\n1. Show all customers and accounts\n2. get text file of all customers and accounts\n0. log out\noption: ";
+                        getMenuOption(menuOption);
+                        switch (menuOption)
+                        {
+                        case 1:
+                            adminShowCustomers(customerArr,CUSTOMER_ARRSIZE,savingsArr,checkingArr,ACCOUNT_ARRSIZE);
+                        case 2:
+                            break;
+                        default:
+                            if(menuOption !=0)
+                            cout << "\nOption invalid, please try again.\n";
+                        }
+                    }
+                }while(menuOption !=0);
+                menuOption=3;
                 break;
             default:
                 if(menuOption !=0)

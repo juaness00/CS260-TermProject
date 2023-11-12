@@ -296,5 +296,23 @@ void transferBetweenAccounts(string username, SavingsAccount *sAccounts, Checkin
         }
     }
 }
+
+void adminShowCustomers(Customer *customerArr, int customerArrSize,SavingsAccount *sAccounts, CheckingAccount *cAccounts, int accountArrSize){
+    for(int i = 0; i < customerArrSize; i++){
+        if(!customerArr[i].isEmpty()){
+            customerArr[i].PrintInfo();
+            showCustomerAccounts(customerArr[i].getUser(),sAccounts,cAccounts,accountArrSize,false);
+        }
+    }
+}
+
+bool loginAdmin(string user, string pass){
+    string username = "admin", password = "admin123";
+    if(user == username && pass == password){
+        return true;
+    }
+    return false;
+
+}
 #endif
  
