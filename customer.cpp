@@ -127,7 +127,7 @@
     cout << "Name: " << fname << " " << lname << endl;
     cout << "Address: " << address << endl;
     cout << "Phone: " << phone << endl;
-    cout << "email: " << phone << endl;
+    cout << "email: " << email << endl;
   }
 
   bool Customer::isEmpty(){
