@@ -145,4 +145,10 @@
     hasOneAccount = true;
   }
 
-  
+  void Customer::changePassword(string _password){
+    password = _password;
+  }
+
+  void Customer::changeUsername(string _username){
+    username = _username;
+  }

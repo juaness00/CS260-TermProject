@@ -34,6 +34,8 @@ class Customer
   string getUser();
   string getPassword();
   void PrintInfo();
+  void changeUsername(string _username);
+  void changePassword(string _password);
 
 };
 

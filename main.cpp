@@ -37,7 +37,7 @@ int main()
                 if (!currentCustomer.isEmpty()){
                     do{
                         cout << "Welcome " << currentCustomer.getfName() << " " << currentCustomer.getlName() << endl;
-                        cout << "here are your menu options:\n1. show account and customer information\n2. deposit to account\n3. withdraw from account\n4. show total balance\n5. tranfer to another account\n6. create an account\n0. Enter 0 to log out\n";
+                        cout << "here are your menu options:\n1. show account and customer information\n2. deposit to account\n3. withdraw from account\n4. show total balance\n5. tranfer to another account\n6. create an account\n7. change username\n8. change password\n0. Enter 0 to log out\n";
                         cout << "option: ";
                         getMenuOption(menuOption);
                         cout << "\n\n\n\n";
@@ -146,6 +146,18 @@ int main()
                                 cout << "\nOption invalid, please try again.\n";
                             }
                             cout << "\n\n\n\n";
+                            break;
+                        case 7:
+                            if(IsExit(username,"Enter new username: ")){
+                                break;
+                            }
+                            changeUsername(currentCustomer,customerArr,CUSTOMER_ARRSIZE,username);
+                            break;
+                        case 8:
+                            if(IsExit(password,"Enter new password: ")){
+                                break;
+                            }
+                            changePassword(currentCustomer,password);
                             break;
                         default:
                             if(menuOption !=0)
