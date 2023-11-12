@@ -8,6 +8,9 @@
 #include "customer.h"
 using namespace std;
 
+ifstream infile;
+ofstream outfile;
+
 bool IsExit(string &var, string text){
     cout << text;
     cin >> var;
@@ -304,6 +307,35 @@ void adminShowCustomers(Customer *customerArr, int customerArrSize,SavingsAccoun
             showCustomerAccounts(customerArr[i].getUser(),sAccounts,cAccounts,accountArrSize,false);
         }
     }
+}
+
+void adminTextCustomers(Customer *customerArr, int customerArrSize,SavingsAccount *sAccounts, CheckingAccount *cAccounts, int accountArrSize, const string & filename)
+{
+   outfile.open(filename);
+
+   if(!outfile.is_open())
+   {
+    cout << "Error creating file" << endl;
+    return;
+   }
+
+   streambuf *coutbuf = cout.rdbuf();
+   cout.rdbuf(outfile.rdbuf());
+
+   for(int i = 0; i < customerArrSize; i++)
+    {
+        if(!customerArr[i].isEmpty())
+        {
+            customerArr[i].PrintInfo();
+            showCustomerAccounts(customerArr[i].getUser(),sAccounts,cAccounts,accountArrSize,false);
+            
+        }
+
+    }
+
+    cout.rdbuf(coutbuf);
+
+    outfile.close();
 }
 
 bool loginAdmin(string user, string pass){

@@ -21,6 +21,8 @@ int main()
     int menuOption;
     int accountNumber, transferTo, transferFrom;
     string username, password;
+    ifstream infile;
+    ofstream outfile;
     for(int i=0; i < ACCOUNT_ARRSIZE; i++){
         currentAvaliableCheckingIndexes[i] = true;
         currentAvaliableSavingsIndexes[i] = true;
@@ -176,6 +178,8 @@ int main()
                             cout << "\n\n\n\n";
                             break;
                         case 2:
+                            adminTextCustomers(customerArr,CUSTOMER_ARRSIZE,savingsArr,checkingArr,ACCOUNT_ARRSIZE,"/Users/emanuelespitia/Library/CloudStorage/OneDrive-JacksonvilleUniversity/Sophmore 1st/CS-260/term project//customers.txt");
+                            cout << "\n\n\n\n";
                             break;
                         default:
                             if(menuOption !=0)
