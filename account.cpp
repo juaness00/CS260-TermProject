@@ -37,8 +37,16 @@ void Account::withdraw(double _amount)
         cout << "Invalid withdraw amount, Try again. \n";
         return;
     }
-    balance = balance - _amount;
-    withdraws++;
+    if(_amount < balance)
+    {
+        balance = balance - _amount;
+        withdraws++;
+    }
+    else
+    {
+        cout << "Invalid withdraw amount, Try again. \n";
+        return;
+    }
 }
 
 void Account::changefName(string _fname)
