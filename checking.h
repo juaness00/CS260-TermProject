@@ -13,7 +13,7 @@ class CheckingAccount: public Account
     public:
     CheckingAccount();
     CheckingAccount(Customer customer, double _balance, double _overDraftLimit);
-    void Withdraw(double amount);
+    void withdraw(double amount);
 
 
 };

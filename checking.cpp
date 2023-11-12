@@ -11,28 +11,16 @@ CheckingAccount::CheckingAccount(Customer customer, double _balance, double _ove
     overDraftLimit = _overDraftLimit;
 }
 
-void CheckingAccount::Withdraw(double amount)
+void CheckingAccount::withdraw(double amount)
 {
-    if(amount <= balance)
+    if((amount-balance) <= overDraftLimit)
     {
-        balance = balance - amount;
+        balance = balance - amount -20;
         withdraws++;
+        overDraftLimit = overDraftLimit + balance;
     }
-    
-    else 
+     else 
     {
-         if((amount-balance) <= overDraftLimit)
-         {
-            balance = balance - amount -20;
-            withdraws++;
-            overDraftLimit = overDraftLimit + balance;
-         }
-
-         else 
-         {
-            cout <<"Transaction can not be completed, your balance is too low. " << endl;
-         }
+        cout <<"Transaction can not be completed, your balance is too low. " << endl;
     }
-
-
 }
