@@ -14,6 +14,8 @@ class SavingsAccount: public Account
     SavingsAccount();
     SavingsAccount(Customer customer, double _interestRate , double _balance);
     void printInfo(bool showCustomerInfo);
+    void payInterest();
+    void deposit(double amount);
 };
 
 
