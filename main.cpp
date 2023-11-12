@@ -12,7 +12,7 @@ int main()
     const int ACCOUNT_ARRSIZE = 5;
     bool currentAvaliableSavingsIndexes[ACCOUNT_ARRSIZE];
     bool currentAvaliableCheckingIndexes[ACCOUNT_ARRSIZE];
-    int CUSTOMER_ARRSIZE = 10;
+    int const CUSTOMER_ARRSIZE = 10;
     int current_customer_index = 0;
     SavingsAccount savingsArr[ACCOUNT_ARRSIZE];
     CheckingAccount checkingArr[ACCOUNT_ARRSIZE];
