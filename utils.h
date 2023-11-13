@@ -125,7 +125,7 @@ void createNewCustomer(Customer *customerArr, int &current_customer_index, int c
 
 
 
-Customer loginCustomer(Customer *customerArr, int customerArrSize){
+Customer loginCustomer(Customer *customerArr, int customerArrSize, int &customerIndex){
     string username, password;
     Customer tempCustomer;
     if(IsExit(username, "Enter username: ")){
@@ -135,6 +135,7 @@ Customer loginCustomer(Customer *customerArr, int customerArrSize){
     for(int i = 0; i < customerArrSize; i++){
         if(customerArr[i].getUser() == username){
             tempCustomer = customerArr[i];
+            customerIndex = i;
             break;
         }
     }
@@ -347,29 +348,21 @@ bool loginAdmin(string user, string pass){
 
 }
 
-void changeUsername(Customer &customer, Customer *customerArr, int arrSize, string username, string oldUsername){
+void changeUsername(Customer &customer, Customer *customerArr, int arrSize, string username, int current_customer_index){
     for(int i = 0; i < arrSize; i++){
         if(customerArr[i].getUser() == username){
             cout << "username already in use.\n";
             return;
         }
     }
-    customer.changeUsername(username);
-    for(int i = 0; i < arrSize; i++){
-        if(customerArr[i].getUser() == oldUsername){
-            customerArr[i] = customer;
-        }
-    }
+    customerArr[current_customer_index].changeUsername(username);
+    customer = customerArr[current_customer_index];
     cout << "username changed to " << username << endl;
 }
 
-void changePassword(Customer &customer, string password, Customer *customerArr, int arrSize){
-    customer.changePassword(password);
-    for(int i = 0; i < arrSize; i++){
-        if(customerArr[i].getUser() == customer.getUser()){
-            customerArr[i] = customer;
-        }
-    }
+void changePassword(Customer &customer, string password, Customer *customerArr, int arrSize, int current_customer_index){
+    customerArr[current_customer_index].changePassword(password);
+    customer = customerArr[current_customer_index];
     cout << "password successfully changed.\n";
 
 }

@@ -13,7 +13,8 @@ int main()
     bool currentAvaliableSavingsIndexes[ACCOUNT_ARRSIZE];
     bool currentAvaliableCheckingIndexes[ACCOUNT_ARRSIZE];
     int const CUSTOMER_ARRSIZE = 10;
-    int current_customer_index = 0;
+    int current_customers = 0;
+    int customer_index = 0;
     SavingsAccount savingsArr[ACCOUNT_ARRSIZE];
     CheckingAccount checkingArr[ACCOUNT_ARRSIZE];
     Customer customerArr[CUSTOMER_ARRSIZE];;
@@ -33,7 +34,7 @@ int main()
         cout << "\n\n\n\n";
         switch(menuOption){
             case 1:
-                currentCustomer = loginCustomer(customerArr,CUSTOMER_ARRSIZE);
+                currentCustomer = loginCustomer(customerArr,CUSTOMER_ARRSIZE,customer_index);
                 if (!currentCustomer.isEmpty()){
                     do{
                         cout << "Welcome " << currentCustomer.getfName() << " " << currentCustomer.getlName() << endl;
@@ -151,13 +152,13 @@ int main()
                             if(IsExit(username,"Enter new username: ")){
                                 break;
                             }
-                            changeUsername(currentCustomer,customerArr,CUSTOMER_ARRSIZE,username,currentCustomer.getUser());
+                            changeUsername(currentCustomer,customerArr,CUSTOMER_ARRSIZE,username,customer_index);
                             break;
                         case 8:
                             if(IsExit(password,"Enter new password: ")){
                                 break;
                             }
-                            changePassword(currentCustomer,password,customerArr,CUSTOMER_ARRSIZE);
+                            changePassword(currentCustomer,password,customerArr,CUSTOMER_ARRSIZE,customer_index);
                             break;
                         default:
                             if(menuOption !=0)
@@ -168,7 +169,7 @@ int main()
                 menuOption = 1;
                 break;
             case 2:
-                createNewCustomer(customerArr,current_customer_index,CUSTOMER_ARRSIZE);
+                createNewCustomer(customerArr,current_customers,CUSTOMER_ARRSIZE);
                 cout << "\n\n\n\n";
                 break;
             case 3:
