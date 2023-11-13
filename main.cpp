@@ -152,7 +152,7 @@ int main()
                             if(IsExit(username,"Enter new username: ")){
                                 break;
                             }
-                            changeUsername(currentCustomer,customerArr,CUSTOMER_ARRSIZE,username,customer_index);
+                            changeUsername(currentCustomer,customerArr,CUSTOMER_ARRSIZE,username,customer_index,savingsArr,checkingArr,ACCOUNT_ARRSIZE);
                             break;
                         case 8:
                             if(IsExit(password,"Enter new password: ")){
