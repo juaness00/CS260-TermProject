@@ -347,7 +347,7 @@ bool loginAdmin(string user, string pass){
 
 }
 
-void changeUsername(Customer &customer, Customer *customerArr, int arrSize, string username){
+void changeUsername(Customer &customer, Customer *customerArr, int arrSize, string username, string oldUsername){
     for(int i = 0; i < arrSize; i++){
         if(customerArr[i].getUser() == username){
             cout << "username already in use.\n";
@@ -355,12 +355,23 @@ void changeUsername(Customer &customer, Customer *customerArr, int arrSize, stri
         }
     }
     customer.changeUsername(username);
+    for(int i = 0; i < arrSize; i++){
+        if(customerArr[i].getUser() == oldUsername){
+            customerArr[i] = customer;
+        }
+    }
     cout << "username changed to " << username << endl;
 }
 
-void changePassword(Customer &customer, string password){
+void changePassword(Customer &customer, string password, Customer *customerArr, int arrSize){
     customer.changePassword(password);
+    for(int i = 0; i < arrSize; i++){
+        if(customerArr[i].getUser() == customer.getUser()){
+            customerArr[i] = customer;
+        }
+    }
     cout << "password successfully changed.\n";
+
 }
 #endif
  

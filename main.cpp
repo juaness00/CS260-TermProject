@@ -151,13 +151,13 @@ int main()
                             if(IsExit(username,"Enter new username: ")){
                                 break;
                             }
-                            changeUsername(currentCustomer,customerArr,CUSTOMER_ARRSIZE,username);
+                            changeUsername(currentCustomer,customerArr,CUSTOMER_ARRSIZE,username,currentCustomer.getUser());
                             break;
                         case 8:
                             if(IsExit(password,"Enter new password: ")){
                                 break;
                             }
-                            changePassword(currentCustomer,password);
+                            changePassword(currentCustomer,password,customerArr,CUSTOMER_ARRSIZE);
                             break;
                         default:
                             if(menuOption !=0)
