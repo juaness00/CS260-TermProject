@@ -191,7 +191,7 @@ int main()
                             cout << "\n\n\n\n";
                             break;
                         case 2:
-                            adminTextCustomers(customerArr,CUSTOMER_ARRSIZE,savingsArr,checkingArr,ACCOUNT_ARRSIZE,"/Users/emanuelespitia/Library/CloudStorage/OneDrive-JacksonvilleUniversity/Sophmore 1st/CS-260/term project//customers.txt");
+                            adminTextCustomers(customerArr,CUSTOMER_ARRSIZE,savingsArr,checkingArr,ACCOUNT_ARRSIZE,"C:\Customer.txt");
                             cout << "\n\n\n\n";
                             break;
                         default:
